@@ -51,6 +51,8 @@ Todo example
 ]
 ```
 
+To follow along clone this project and `cd jq` run the examples below to see the output. 
+
 Here are a few basic examples to get started.
 
 ```sh
@@ -94,22 +96,29 @@ jq -r '.[] | .username + "|" + .email + "|" + .company.name'  user.json | awk -F
 '
 ```
 
+Now lets see if we can join the two files.  We want to match up each doc on a common field and combine the doc. The user has `id` and the todos have `userId`. Lets give it a go. 
+
 ```sh
-# This will combine the data from both file like this
-# [user docs],[todo docs]
-# such that 
-#  .[0] refers to users
-#  .[1] refers to todos
-# 
-jq -s '.' user.json todos.json
+# First we need the user doc to have a userId to match todo
+# the result looks like:
+jq '.[] | { userId: .id }' user.json 
+
+# Now lets add the other user fields
+# Whit this we have our originial user doc but with userId included
+jq '.[] | { userId: .id } + .' user.json 
+
+# Make into an array and save to new file
+jq '[.[] | { userId: .id } + .]' user.json > user-modified.json
+# or lets assume we only want userId and email
+jq '[.[] | { userId: .id, email: .email }]' user.json > user-modified.json
+
 
 # This will combine the arrays into one
-# [ {user1}, {user2}, {user3}..., {todo1}, {todo2},{todo3}...]
-jq -s '.[0] + .[1]' user.json todos.json
+# [ {user1}, {user2}, {user3}, {todo1}, {todo2}, {todo3} ]
+jq -s '.[0] + .[1]' user-modified.json todos.json 
 
-# But that is not what we want, 
-# we want to "join" the user doc with the corresponding todo docs
-
+# Group by userId
+# [ {user1, todo:[{},{},{}]}, {user2, todo:[{},{},{}]}... ]
+jq -s '[.[0] + .[1] | group_by(.userId)[] | .[0].userId as $u | {userId: $u, todos: .[1:]}]' user-modified.json todos.json 
 ```
 
- ## WORK IN PROGRESS
