@@ -1,6 +1,11 @@
 # JQ
 
-* [a cheetsheet gist](https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4)
+## Resources
+
+* [jqplay.org](https://jqplay.org/)
+* a cheetsheet gist - [here](https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4)
+* jq lession on programminghistorian.org - [here](https://programminghistorian.org/en/lessons/json-and-jq)
+
 
 ## User Data Examples
 
@@ -38,7 +43,7 @@ User sample
 ]
 ```
 
-Todo example
+A todo example
 
 ```json
 [
