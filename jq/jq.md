@@ -2,10 +2,10 @@
 
 ## Resources
 
+* [The jq Manual](https://stedolan.github.io/jq/manual/)
 * [jqplay.org](https://jqplay.org/)
-* a cheetsheet gist - [here](https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4)
-* jq lession on programminghistorian.org - [here](https://programminghistorian.org/en/lessons/json-and-jq)
-
+* [a cheetsheet git](https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4)
+* [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq) on [programminghistorian.org](https://programminghistorian.org/en/) Matthew Lincoln, "Reshaping JSON with jq," Programming Historian 5 (2016), https://doi.org/10.46430/phen0055.
 
 ## User Data Examples
 
