@@ -127,3 +127,32 @@ jq -s '.[0] + .[1]' user-modified.json todos.json
 jq -s '[.[0] + .[1] | group_by(.userId)[] | .[0].userId as $u | {userId: $u, todos: .[1:]}]' user-modified.json todos.json 
 ```
 
+## 99 99 Bottles of Beer
+
+Display the complete lyrics for the song. "99 Bottles of Beer on the Wall".  The example below was taken from [rosettacode.org](http://www.rosettacode.org/wiki/99_bottles_of_beer). More [jq examples](http://www.rosettacode.org/wiki/Category:Jq)
+
+### Source
+
+jq source code [99-bottles.jq](99-bottles.jq)
+
+### Run
+
+```sh
+jq -n -r -f 99-bottles.jq
+ 
+2 bottles of beer on the wall
+2 bottles of beer
+Take one down, pass it around
+2 bottles of beer on the wall
+ 
+1 bottles of beer on the wall
+1 bottles of beer
+Take one down, pass it around
+1 bottles of beer on the wall
+ 
+0 bottles of beer on the wall
+0 bottles of beer
+Take one down, pass it around
+0 bottles of beer on the wall
+
+```
